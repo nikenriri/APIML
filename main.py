@@ -1,9 +1,9 @@
+from waitress import serve
 import cv2
 import numpy as np
 import tensorflow as tf
 from typing import Union
 from fastapi import FastAPI
-import uvicorn
 
 #Define Function
 labels = ['Jamur Enoki', 'Jamur Shimeji Coklat', 'Jamur Shimeji Putih', 'Tiram']
@@ -29,4 +29,4 @@ def read_root():
     print(result)
     return result
 
-uvicorn.run(app, host='0.0.0.0', port=8001)
+serve(app, host="0.0.0.0", port=int(os.environ.get('PORT', 8001)))
